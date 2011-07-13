@@ -1,0 +1,375 @@
+TCertificateKeyAndTrust
+v7
+r0
+t330827726.750881
+cCheck dependencies
+cProcessInfoPlistFile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/Info.plist CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist
+cProcessPCH /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch.gch CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/main.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrustAppDelegate.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/RSA.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/NSData+Base64.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/Global.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m normal i386 objective-c com.apple.compilers.llvmgcc42
+cLd /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust normal i386
+cGenerateDSYMFile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app.dSYM /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust
+cCopyStringsFile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj/InfoPlist.strings CertificateKeyAndTrust/en.lproj/InfoPlist.strings
+cCompileXIB /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/MainWindow.xib
+cCpResource build/Debug-iphonesimulator/CertificateKeyAndTrust.app/testkeypair.pem CertificateKeyAndTrust/testkeypair.pem
+cCpResource build/Debug-iphonesimulator/CertificateKeyAndTrust.app/testpublic.pem CertificateKeyAndTrust/testpublic.pem
+cTouch /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+c000000004DF006F30000000000000110
+t1307576051
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54CFFA00000000002999B0
+t1297403898
+s2726320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54CFE5000000000029DA70
+t1297403877
+s2742896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54CFB80000000000001466
+t1297403832
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Security.framework/Headers/Security.h
+c000000004D54CEFA00000000000004F5
+t1297403642
+s1269
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Security.framework/Security
+c000000004D54CEFE0000000000088380
+t1297403646
+s557952
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5615B40000000000000AA1
+t1297487284
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5616030000000000766870
+t1297487363
+s7759984
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/usr/include/Availability.h
+c000000004D4F7A2B0000000000001B19
+t1297054251
+s6937
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch
+c000000004E05E4EF0000000000000158
+t1309009135
+s344
+i<Availability.h>
+i<UIKit/UIKit.h>
+i<Foundation/Foundation.h>
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.h
+c000000004E05E4EF0000000000000157
+t1309009135
+s343
+i<UIKit/UIKit.h>
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m
+c000000004E07CF3B000000000000082B
+t1309134651
+s2091
+i"CertificateKeyAndTrustAppDelegate.h"
+i"RSA.h"
+i"Global.h"
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.h
+c000000004E07779C00000000000000E2
+t1309112220
+s226
+i<Foundation/Foundation.h>
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m
+c000000004E07CFB80000000000000104
+t1309134776
+s260
+i"Global.h"
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.h
+c000000004E05E4EF0000000000000562
+t1309009135
+s1378
+i<Foundation/Foundation.h>
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m
+c000000004E05E4EF0000000000002239
+t1309009135
+s8761
+i"NSData+Base64.h"
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.h
+c000000004E07D04E00000000000001D0
+t1309134926
+s464
+i<Foundation/Foundation.h>
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m
+c000000004E07D04E000000000000333D
+t1309134926
+s13117
+i"Global.h"
+i"RSA.h"
+i<Security/Security.h>
+i"NSData+Base64.h"
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/InfoPlist.strings
+c000000004E05E4EF000000000000002D
+t1309009135
+s45
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/MainWindow.xib
+c000000004E05E4EF000000000000214B
+t1309009135
+s8523
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m
+c000000004E05E4EF0000000000000160
+t1309009135
+s352
+i<UIKit/UIKit.h>
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/testkeypair.pem
+c000000004E074A5B0000000000000377
+t1309100635
+s887
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/testpublic.pem
+c000000004E074A5F0000000000000110
+t1309100639
+s272
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrust.LinkFileList
+c000000004E07CDDB000000000000035B
+t1309134299
+s859
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrustAppDelegate.o
+t1309134926
+s49880
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/Global.o
+t1309134776
+s2344
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/NSData+Base64.o
+t1309134300
+s9688
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/RSA.o
+t1309134926
+s27640
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/main.o
+t1309134300
+s3144
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app
+t1309134926
+s272
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app.dSYM
+t1309134926
+s102
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust
+t1309134926
+s33956
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/Info.plist
+t1309134299
+s841
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/PkgInfo
+t1309134299
+s8
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj/InfoPlist.strings
+t1309134300
+s42
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj/MainWindow.nib
+t1309134300
+s1546
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/testkeypair.pem
+t1309134300
+s887
+
+N/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/testpublic.pem
+t1309134300
+s272
+
+N/var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch.gch
+t1309134299
+s12283312
+
+NCertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist
+c000000004E05E4EF00000000000004A1
+t1309009135
+s1185
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies330827726#330827726#0(0"0(0#1#0"4717913459146383360#0"0#
+
+CCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrustAppDelegate.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s330827726.553613
+e330827726.693513
+r1
+xCompileC
+xbuild/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrustAppDelegate.o
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF07#2@117"Compile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m330827726#330827726#0(0"0(0#0#109"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m8462919440105830400#2484"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-generated-files.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-own-target-headers.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-all-target-headers.hmap -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-project-headers.hmap -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/include -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources/i386 -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources -include /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrustAppDelegate.m -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrustAppDelegate.o0#
+
+CCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/Global.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s330827576.664009
+e330827576.828418
+r1
+xCompileC
+xbuild/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/Global.o
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF07#2@90"Compile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m330827576#330827576#0(0"0(0#0#82"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m8618396864#2430"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-generated-files.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-own-target-headers.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-all-target-headers.hmap -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-project-headers.hmap -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/include -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources/i386 -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources -include /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/Global.m -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/Global.o0#
+
+CCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/NSData+Base64.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s330827100.160680
+e330827100.244185
+r1
+xCompileC
+xbuild/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/NSData+Base64.o
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF07#2@97"Compile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m330827100#330827100#0(0"0(0#0#89"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m8603301856#2444"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-generated-files.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-own-target-headers.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-all-target-headers.hmap -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-project-headers.hmap -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/include -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources/i386 -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources -include /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/NSData+Base64.m -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/NSData+Base64.o0#
+
+CCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/RSA.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s330827726.563500
+e330827726.684891
+r1
+xCompileC
+xbuild/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/RSA.o
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF07#2@87"Compile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m330827726#330827726#0(0"0(0#0#79"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m8613454496#2424"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-generated-files.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-own-target-headers.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-all-target-headers.hmap -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-project-headers.hmap -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/include -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources/i386 -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources -include /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/RSA.m -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/RSA.o0#
+
+CCompileC build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/main.o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m normal i386 objective-c com.apple.compilers.llvmgcc42
+s330827100.036087
+e330827100.091032
+r1
+xCompileC
+xbuild/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/main.o
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF07#2@88"Compile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m330827100#330827100#0(0"0(0#0#80"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m8608625568#2426"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-generated-files.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-own-target-headers.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-all-target-headers.hmap -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-project-headers.hmap -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/include -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources/i386 -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources -include /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/main.m -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/MainWindow.xib
+s330827100.314565
+e330827100.973267
+r1
+xCompileXIB
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/MainWindow.xib
+lSLF07#2@57"CompileXIB CertificateKeyAndTrust/en.lproj/MainWindow.xib330827100#330827100#0(0"0(0#0#97"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/MainWindow.xib8603404512#724"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj/MainWindow.nib /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CCopyStringsFile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj/InfoPlist.strings CertificateKeyAndTrust/en.lproj/InfoPlist.strings
+s330827100.313549
+e330827100.495995
+r1
+xCopyStringsFile
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj/InfoPlist.strings
+xCertificateKeyAndTrust/en.lproj/InfoPlist.strings
+lSLF07#2@54"Copy CertificateKeyAndTrust/en.lproj/InfoPlist.strings330827100#330827100#0(0"0(0#0#100"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/en.lproj/InfoPlist.strings8604425376#607"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv ICONV /usr/bin/iconv    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding binary CertificateKeyAndTrust/en.lproj/InfoPlist.strings --outdir /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/en.lproj0#
+
+CCpResource build/Debug-iphonesimulator/CertificateKeyAndTrust.app/testkeypair.pem CertificateKeyAndTrust/testkeypair.pem
+s330827100.496122
+e330827100.528275
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/CertificateKeyAndTrust.app/testkeypair.pem
+xCertificateKeyAndTrust/testkeypair.pem
+lSLF07#2@43"Copy CertificateKeyAndTrust/testkeypair.pem330827100#330827100#0(0"0(0#0#89"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/testkeypair.pem8602335488#609"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/testkeypair.pem /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app0#
+
+CCpResource build/Debug-iphonesimulator/CertificateKeyAndTrust.app/testpublic.pem CertificateKeyAndTrust/testpublic.pem
+s330827100.497400
+e330827100.528420
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/CertificateKeyAndTrust.app/testpublic.pem
+xCertificateKeyAndTrust/testpublic.pem
+lSLF07#2@42"Copy CertificateKeyAndTrust/testpublic.pem330827100#330827100#0(0"0(0#0#88"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/testpublic.pem8602266016#608"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/testpublic.pem /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app0#
+
+CGenerateDSYMFile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app.dSYM /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust
+s330827726.728422
+e330827726.746373
+r1
+xGenerateDSYMFile
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app.dSYM
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust
+lSLF07#2@154"GenerateDSYMFile build/Debug-iphonesimulator/CertificateKeyAndTrust.app.dSYM build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust330827726#330827726#0(0"0(0#0#128"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust8611632704#526"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/dsymutil /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app.dSYM0#
+
+CLd /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust normal i386
+s330827726.693604
+e330827726.728313
+r1
+xLd
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust
+xnormal
+xi386
+lSLF07#2@133"Link /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust330827726#330827726#0(0"0(0#0#0"32651513916751976#1131"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -filelist /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/Objects-normal/i386/CertificateKeyAndTrust.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Security -framework UIKit -framework Foundation -framework CoreGraphics -prebind -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/CertificateKeyAndTrust0#
+
+CProcessInfoPlistFile /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/Info.plist CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist
+s330827099.262149
+e330827099.265974
+r1
+xProcessInfoPlistFile
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/Info.plist
+xCertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist
+lSLF07#2@64"Process CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist330827099#330827099#0(0"0(0#0#107"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist8606408640#645"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    builtin-infoPlistUtility CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist -genpkginfo /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app/Info.plist0#
+
+CProcessPCH /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch.gch CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch normal i386 objective-c com.apple.compilers.llvmgcc42
+s330827099.266080
+e330827100.035951
+r1
+xProcessPCH
+x/var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch.gch
+xCertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvmgcc42
+lSLF07#2@67"Precompile CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch330827099#330827100#0(0"0(0#0#107"/Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch8604607744#2291"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/llvm-gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -DDEBUG -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-generated-files.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-own-target-headers.hmap -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-all-target-headers.hmap -iquote /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/CertificateKeyAndTrust-project-headers.hmap -F/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/include -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources/i386 -I/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/CertificateKeyAndTrust.build/Debug-iphonesimulator/CertificateKeyAndTrust.build/DerivedSources -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch -o /var/folders/Ii/IiiPR2VUFjGgMRjVSocBKU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CertificateKeyAndTrust-Prefix-fbfowylxxfniplcyizdtukhukltw/CertificateKeyAndTrust-Prefix.pch.gch0#
+
+CTouch /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app
+s330827726.746915
+e330827726.750823
+r1
+xTouch
+x/Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app
+lSLF07#2@111"Touch /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app330827726#330827726#0(0"0(0#0#0"8611455296#379"    cd /Users/liouville/kuaencrypt/CertificateKeyAndTrust    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /usr/bin/touch -c /Users/liouville/kuaencrypt/CertificateKeyAndTrust/build/Debug-iphonesimulator/CertificateKeyAndTrust.app0#
+
