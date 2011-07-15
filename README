@@ -1,4 +1,4 @@
-This iOS 4.3 project was created in Xcode 4.  The most important class in this project is RSA.h.  It contains the following functions in its public interface:
+This iOS 4.3 project was created in Xcode 4.  The most important class in this project is "RSA".  It contains the following functions in its public interface:
 
 These functions are slightly modified (fixing typos) from functions given in Apple's Certificate, Key, and Trust Programming Guide:
 
