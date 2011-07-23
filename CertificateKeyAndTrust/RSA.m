@@ -53,6 +53,14 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
  
  status = SecItemCopyMatching((CFDictionaryRef)queryPrivateKey, (CFTypeRef *)&privateKey);
  
+ if (status) 
+ {
+  if(privateKey) CFRelease(privateKey);
+  if(queryPrivateKey) [queryPrivateKey release];
+  
+  return nil;
+ }
+ 
  //  Allocate the buffer
  plainBufferSize = SecKeyGetBlockSize(privateKey);
  plainBuffer = malloc(plainBufferSize);
@@ -67,10 +75,22 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
  if (plainBufferSize < cipherBufferSize)
  {
   printf("Could not decrypt.  Packet too large.\n");
+  
+  if(privateKey) CFRelease(privateKey);
+  if(queryPrivateKey) [queryPrivateKey release];
+  
   return nil;
  }
  
- status = SecKeyDecrypt(privateKey, kSecPaddingPKCS1, cipherBuffer, cipherBufferSize, plainBuffer, &plainBufferSize); 
+ status = SecKeyDecrypt(privateKey, kSecPaddingPKCS1, cipherBuffer, cipherBufferSize, plainBuffer, &plainBufferSize);
+ 
+ if (status) 
+ {
+  if(privateKey) CFRelease(privateKey);
+  if(queryPrivateKey) [queryPrivateKey release];
+  
+  return nil;
+ }
 
  NSData *decryptedData = [NSData dataWithBytes:plainBuffer length:plainBufferSize];
  NSString *decryptedString = [[[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding] autorelease];
@@ -97,6 +117,14 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
  
  status = SecItemCopyMatching((CFDictionaryRef)queryPublicKey, (CFTypeRef *)&publicKey);
  
+ if (status) 
+ {
+  if(publicKey) CFRelease(publicKey);
+  if(queryPublicKey) [queryPublicKey release];
+  
+  return nil;
+ }
+ 
  //  Allocate a buffer
  cipherBufferSize = SecKeyGetBlockSize(publicKey);
  uint8_t *cipherBuffer = malloc(cipherBufferSize);
@@ -113,10 +141,22 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
  if (cipherBufferSize < sizeof(nonce))
  {
   printf("Could not decrypt.  Packet too large.\n");
+  
+  if(publicKey) CFRelease(publicKey);
+  if(queryPublicKey) [queryPublicKey release];
+  
   return nil;
  }
  
  status = SecKeyEncrypt(publicKey, kSecPaddingPKCS1, nonce, strlen( (char*)nonce ) + 1, &cipherBuffer[0], &cipherBufferSize);
+ 
+ if (status) 
+ {
+  if(publicKey) CFRelease(publicKey);
+  if(queryPublicKey) [queryPublicKey release];
+  
+  return nil;
+ }
  
  NSData *encryptedData = [NSData dataWithBytes:cipherBuffer length:cipherBufferSize];
 
@@ -171,24 +211,16 @@ size_t encodeLength(unsigned char * buf, size_t length)
  OSStatus err = SecItemCopyMatching((CFDictionaryRef)queryPrivateKey,(CFTypeRef *)&privateKeyBits);
  
  if (err != noErr)
+ {
+  [queryPrivateKey release];
   return nil;
+ }
  
  // OK - that gives us the "BITSTRING component of a full DER
  // encoded RSA private key - we now need to build the rest
  
  NSMutableData * encKey = [[NSMutableData alloc] init];
- int bitstringEncLength;
- 
- // When we get to the bitstring - how will we encode it?
- if  ([privateKeyBits length ] + 1  < 128 )
-  bitstringEncLength = 1 ;
- else
-  bitstringEncLength = (([privateKeyBits length ] +1 ) / 256 ) + 2 ; 
- 
-
  NSLog(@"\n%@\n\n",[[NSData dataWithBytes:privateKeyBits length:[privateKeyBits length]] description]);
-
- 
  
  // Now the actual key
  [encKey appendData:privateKeyBits];
@@ -201,6 +233,7 @@ size_t encodeLength(unsigned char * buf, size_t length)
  
  NSLog(@"\nPEM formatted key:\n%@\n\n",ret);
  
+ [queryPrivateKey release];
  [encKey release];
  return ret;
 }
@@ -222,7 +255,10 @@ size_t encodeLength(unsigned char * buf, size_t length)
  OSStatus err = SecItemCopyMatching((CFDictionaryRef)queryPublicKey,(CFTypeRef *)&publicKeyBits);
  
  if (err != noErr)
+ {
+  [queryPublicKey release];
   return nil;
+ }
  
  // OK - that gives us the "BITSTRING component of a full DER
  // encoded RSA public key - we now need to build the rest
@@ -280,7 +316,7 @@ size_t encodeLength(unsigned char * buf, size_t length)
   
   NSLog(@"\nPKCS1 formatted key:\n%@\n\n",ret);
  }
- 
+ [queryPublicKey release];
  [encKey release];
  return ret;
 }
@@ -354,7 +390,7 @@ size_t encodeLength(unsigned char * buf, size_t length)
  [privateKey release];
  if(keyRef) CFRelease(keyRef);
  
- if (keyRef == nil) return NO;
+ if (keyRef == nil || secStatus) return NO;
  
  return YES;
 }
@@ -484,7 +520,7 @@ size_t encodeLength(unsigned char * buf, size_t length)
  [publicKey release];
  if(keyRef) CFRelease(keyRef);
  
- if (keyRef == nil) return NO;
+ if (keyRef == nil || secStatus) return NO;
   
  return YES;
 }
@@ -494,7 +530,6 @@ size_t encodeLength(unsigned char * buf, size_t length)
 # pragma mark Key pair generation method:
 -(void)generateKeyPair
 {
- OSStatus status = noErr;
  NSMutableDictionary *privateKeyAttr = [[NSMutableDictionary alloc] init];
  NSMutableDictionary *publicKeyAttr = [[NSMutableDictionary alloc] init];
  NSMutableDictionary *keyPairAttr = [[NSMutableDictionary alloc] init];
@@ -536,7 +571,7 @@ size_t encodeLength(unsigned char * buf, size_t length)
  [keyPairAttr setObject:privateKeyAttr forKey:(id)kSecPrivateKeyAttrs];
  [keyPairAttr setObject:publicKeyAttr forKey:(id)kSecPublicKeyAttrs];
  
- status = SecKeyGeneratePair((CFDictionaryRef)keyPairAttr,&publicKey, &privateKey);
+ SecKeyGeneratePair((CFDictionaryRef)keyPairAttr,&publicKey, &privateKey);
  
  if(privateKeyAttr) [privateKeyAttr release];
  if(publicKeyAttr) [publicKeyAttr release];
