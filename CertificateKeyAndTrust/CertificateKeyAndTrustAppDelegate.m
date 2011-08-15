@@ -37,8 +37,8 @@
  
  // First Generate a Key pair in house and output the formatted keys:
  [self sampleEncryption:rsa];
- [rsa getPublicKeyX509Formatted:YES];
- [rsa getPKCS1FormattedPrivateKey];
+ [rsa getX509FormattedPublicKey];
+ [rsa getPEMFormattedPrivateKey];
  
  // Import Public Key string from bundle:
  NSError *error = nil;
@@ -48,7 +48,7 @@
   NSLog(@"\nPublic Key String:\n%@\n\n",publicKeyString);
  
  // Add public key to keychain:
- [rsa setPublicKey:publicKeyString isX509Formatted:YES];
+ [rsa setPublicKey:publicKeyString];
 
  // Encrypt sample string:
  NSString *encryptedString = [rsa encryptWithPublicKey:@"This is a test.  Can you encrypt and decrypt this?"];
@@ -60,7 +60,8 @@
   NSLog(@"\nPrivate String:\n%@\n\n",privateKeyString);
  
  // Add private key to the keychain:
- [rsa setPKCS1PrivateKey:privateKeyString];
+ [rsa setPrivateKey:privateKeyString];
+ 
  // Decrypt sample cipher text:
  NSLog(@"\nDecrypted string:\n%@\n\n",[rsa decryptWithPrivateKey:encryptedString]);
  

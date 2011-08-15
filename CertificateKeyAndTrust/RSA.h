@@ -15,23 +15,23 @@
 //
 #import <Foundation/Foundation.h>
 
-@interface RSA : NSObject 
-{
- size_t cipherBufferSize;
-}
+@interface RSA : NSObject { }
 
 -(void)generateKeyPair;
--(NSString *)encryptWithPublicKey:(NSString *)plainTextString;
--(NSString *)decryptWithPrivateKey:(NSString *)inputString;
 
 // These methods are here to import RSA keys from strings and place in your keychain
 // If boolean is set to "YES" then the key is assumed to be x509 formatted, otherwise it is taken to be PKCS1 formatted.
--(BOOL)setPublicKey:(NSString *)publicKeyString isX509Formatted:(BOOL)formatBool;
--(BOOL)setPKCS1PrivateKey:(NSString *)pKCS1PrivateKeyString;
+-(BOOL)setPublicKey:(NSString *)pemPublicKeyString;
+-(BOOL)setPrivateKey:(NSString *)pemPrivateKeyString;
 
 // These methods are here to export RSA keys from keychain to strings
 // If boolean is set to "YES" then the key is assumed to be x509 formatted, otherwise it is taken to be PKCS1 formatted.
--(NSString *)getPublicKeyX509Formatted:(BOOL)formatBool;
--(NSString *)getPKCS1FormattedPrivateKey;
+-(NSString *)getX509FormattedPublicKey;
+-(NSString *)getPEMFormattedPrivateKey;
+
+-(NSString *)encryptWithPublicKey:(NSString *)plainTextString;
+-(NSString *)decryptWithPrivateKey:(NSString *)cipherString;
+
+size_t encodeLength(unsigned char * buf, size_t length);
 
 @end

@@ -25,19 +25,17 @@ static const UInt8 publicKeyIdentifier[] = "com.example.publickey\0";
 static const UInt8 privateKeyIdentifier[] = "com.example.privatekey\0";
 NSString *x509PublicHeader = @"-----BEGIN PUBLIC KEY-----";
 NSString *x509PublicFooter = @"-----END PUBLIC KEY-----";
-NSString *pKCS1PublicHeader = @"-----BEGIN PUBLIC KEY-----";
-NSString *pKCS1PublicFooter = @"-----END PUBLIC KEY-----";
-NSString *pKCS1PrivateHeader = @"-----BEGIN RSA PRIVATE KEY-----";
-NSString *pKCS1PrivateFooter = @"-----END RSA PRIVATE KEY-----";
+NSString *pKCS1PublicHeader = @"-----BEGIN RSA PUBLIC KEY-----";
+NSString *pKCS1PublicFooter = @"-----END RSA PUBLIC KEY-----";
+NSString *pemPrivateHeader = @"-----BEGIN RSA PRIVATE KEY-----";
+NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05, 0x00 };
 
 
 # pragma mark -
 # pragma mark Encryption/Decryption Methods:
--(NSString *)decryptWithPrivateKey:(NSString *)inputString
+-(NSString *)decryptWithPrivateKey:(NSString *)cipherString
 {
- OSStatus status = noErr;
- 
  size_t plainBufferSize;;
  uint8_t *plainBuffer;
  
@@ -51,62 +49,53 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
  [queryPrivateKey setObject:(id)kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
  [queryPrivateKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnRef];
  
- status = SecItemCopyMatching((CFDictionaryRef)queryPrivateKey, (CFTypeRef *)&privateKey);
+ SecItemCopyMatching((CFDictionaryRef)queryPrivateKey, (CFTypeRef *)&privateKey);
  
- if (status) 
+ if (privateKey)
  {
+  plainBufferSize = SecKeyGetBlockSize(privateKey);
+  plainBuffer = malloc(plainBufferSize);
+  
+  NSData *incomingData = [NSData dataFromBase64String:cipherString];
+  uint8_t *cipherBuffer = (uint8_t*)[incomingData bytes];
+  size_t cipherBufferSize = SecKeyGetBlockSize(privateKey);
+  
+  // Ordinarily, you would split the data up into blocks
+  // equal to plainBufferSize, with the last block being
+  // shorter. For simplicity, this example assumes that
+  // the data is short enough to fit.
+  if (plainBufferSize < cipherBufferSize)
+  {
+   printf("Could not decrypt.  Packet too large.\n");
+   
+   if(privateKey) CFRelease(privateKey);
+   if(queryPrivateKey) [queryPrivateKey release];
+   
+   return nil;
+  }
+  
+  SecKeyDecrypt(privateKey, kSecPaddingPKCS1, cipherBuffer, cipherBufferSize, plainBuffer, &plainBufferSize); 
+  
+  NSData *decryptedData = [NSData dataWithBytes:plainBuffer length:plainBufferSize];
+  NSString *decryptedString = [[[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding] autorelease];
+  
   if(privateKey) CFRelease(privateKey);
+  if(queryPrivateKey) [queryPrivateKey release];
+  
+  return decryptedString;
+ }
+ else
+ {
   if(queryPrivateKey) [queryPrivateKey release];
   
   return nil;
  }
- 
- //  Allocate the buffer
- plainBufferSize = SecKeyGetBlockSize(privateKey);
- plainBuffer = malloc(plainBufferSize);
- 
- NSData *incomingData = [NSData dataFromBase64String:inputString];
- uint8_t *cipherBuffer = (uint8_t*)[incomingData bytes];
- 
- // Ordinarily, you would split the data up into blocks
- // equal to plainBufferSize, with the last block being
- // shorter. For simplicity, this example assumes that
- // the data is short enough to fit.
- if (plainBufferSize < cipherBufferSize)
- {
-  printf("Could not decrypt.  Packet too large.\n");
-  
-  if(privateKey) CFRelease(privateKey);
-  if(queryPrivateKey) [queryPrivateKey release];
-  
-  return nil;
- }
- 
- status = SecKeyDecrypt(privateKey, kSecPaddingPKCS1, cipherBuffer, cipherBufferSize, plainBuffer, &plainBufferSize);
- 
- if (status) 
- {
-  if(privateKey) CFRelease(privateKey);
-  if(queryPrivateKey) [queryPrivateKey release];
-  
-  return nil;
- }
-
- NSData *decryptedData = [NSData dataWithBytes:plainBuffer length:plainBufferSize];
- NSString *decryptedString = [[[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding] autorelease];
- 
- if(privateKey) CFRelease(privateKey);
- if(queryPrivateKey) [queryPrivateKey release];
- 
- return decryptedString;
 }
 
 
 
 -(NSString *)encryptWithPublicKey:(NSString *)plainTextString
 {
- OSStatus status = noErr;
-
  SecKeyRef publicKey = NULL;
  NSData * publicTag = [NSData dataWithBytes:publicKeyIdentifier length:strlen((const char *)publicKeyIdentifier)];
  NSMutableDictionary *queryPublicKey = [[NSMutableDictionary alloc] init];
@@ -115,59 +104,51 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
  [queryPublicKey setObject:(id)kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
  [queryPublicKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnRef];
  
- status = SecItemCopyMatching((CFDictionaryRef)queryPublicKey, (CFTypeRef *)&publicKey);
+ SecItemCopyMatching((CFDictionaryRef)queryPublicKey, (CFTypeRef *)&publicKey);
  
- if (status) 
+ if (publicKey)
  {
+  size_t cipherBufferSize = SecKeyGetBlockSize(publicKey);
+  uint8_t *cipherBuffer = malloc(cipherBufferSize);
+  
+  NSLog(@"\nCipher buffer size: %lu\n\n",cipherBufferSize);
+  
+  uint8_t *nonce = (uint8_t *)[plainTextString UTF8String];
+  
+  //  Error handling:
+  // Ordinarily, you would split the data up into blocks
+  // equal to cipherBufferSize, with the last block being
+  // shorter. For simplicity, this example assumes that
+  // the data is short enough to fit.
+  if (cipherBufferSize < sizeof(nonce))
+  {
+   printf("Could not decrypt.  Packet too large.\n");
+   
+   if(publicKey) CFRelease(publicKey);
+   if(queryPublicKey) [queryPublicKey release];
+   free(cipherBuffer);
+   
+   return nil;
+  }
+  
+  SecKeyEncrypt(publicKey, kSecPaddingPKCS1, nonce, strlen( (char*)nonce ) + 1, &cipherBuffer[0], &cipherBufferSize);
+  
+  NSData *encryptedData = [NSData dataWithBytes:cipherBuffer length:cipherBufferSize];
+  
+  if (VERBOSE)
+   NSLog(@"\nBase 64 Encrypted String:\n%@\n\n",[encryptedData base64EncodedString]);
+  
   if(publicKey) CFRelease(publicKey);
   if(queryPublicKey) [queryPublicKey release];
+  free(cipherBuffer);
   
-  return nil;
+  return [encryptedData base64EncodedString];
  }
- 
- //  Allocate a buffer
- cipherBufferSize = SecKeyGetBlockSize(publicKey);
- uint8_t *cipherBuffer = malloc(cipherBufferSize);
- 
- NSLog(@"\nCipher buffer size: %lu\n\n",cipherBufferSize);
- 
- uint8_t *nonce = (uint8_t *)[plainTextString UTF8String];
-
- //  Error handling:
- // Ordinarily, you would split the data up into blocks
- // equal to cipherBufferSize, with the last block being
- // shorter. For simplicity, this example assumes that
- // the data is short enough to fit.
- if (cipherBufferSize < sizeof(nonce))
+ else
  {
-  printf("Could not decrypt.  Packet too large.\n");
-  
-  if(publicKey) CFRelease(publicKey);
   if(queryPublicKey) [queryPublicKey release];
-  
   return nil;
  }
- 
- status = SecKeyEncrypt(publicKey, kSecPaddingPKCS1, nonce, strlen( (char*)nonce ) + 1, &cipherBuffer[0], &cipherBufferSize);
- 
- if (status) 
- {
-  if(publicKey) CFRelease(publicKey);
-  if(queryPublicKey) [queryPublicKey release];
-  
-  return nil;
- }
- 
- NSData *encryptedData = [NSData dataWithBytes:cipherBuffer length:cipherBufferSize];
-
- if (VERBOSE)
-  NSLog(@"\nBase 64 Encrypted String:\n%@\n\n",[encryptedData base64EncodedString]);
- 
- if(publicKey) CFRelease(publicKey);
- if(queryPublicKey) [queryPublicKey release];
- free(cipherBuffer);
- 
- return [encryptedData base64EncodedString];
 }
 
 
@@ -175,7 +156,6 @@ static unsigned char oidSequence[] = { 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48,
 # pragma mark Public Key Import/Export Methods:
 size_t encodeLength(unsigned char * buf, size_t length)
 { 
- // encode length in ASN.1 DER format
  if (length < 128)
  {
   buf[0] = length;
@@ -195,13 +175,11 @@ size_t encodeLength(unsigned char * buf, size_t length)
 
 
 
--(NSString *)getPKCS1FormattedPrivateKey
+-(NSString *)getPEMFormattedPrivateKey
 { 
  NSData *privateTag = [NSData dataWithBytes:privateKeyIdentifier length:strlen((const char *) privateKeyIdentifier)];
  
- // Now lets extract the private key - build query to get bits
- NSMutableDictionary * queryPrivateKey = [[NSMutableDictionary alloc] init];
- 
+ NSMutableDictionary * queryPrivateKey = [[[NSMutableDictionary alloc] init] autorelease];
  [queryPrivateKey setObject:(id)kSecClassKey forKey:(id)kSecClass];
  [queryPrivateKey setObject:privateTag forKey:(id)kSecAttrApplicationTag];
  [queryPrivateKey setObject:(id)kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
@@ -211,41 +189,31 @@ size_t encodeLength(unsigned char * buf, size_t length)
  OSStatus err = SecItemCopyMatching((CFDictionaryRef)queryPrivateKey,(CFTypeRef *)&privateKeyBits);
  
  if (err != noErr)
- {
-  [queryPrivateKey release];
   return nil;
- }
- 
- // OK - that gives us the "BITSTRING component of a full DER
- // encoded RSA private key - we now need to build the rest
  
  NSMutableData * encKey = [[NSMutableData alloc] init];
+ 
  NSLog(@"\n%@\n\n",[[NSData dataWithBytes:privateKeyBits length:[privateKeyBits length]] description]);
  
- // Now the actual key
  [encKey appendData:privateKeyBits];
  [privateKeyBits release];
  
- // Now translate the result to a Base64 string
- NSString *ret = [NSString stringWithFormat:@"%@\n",pKCS1PrivateHeader];
- ret = [ret stringByAppendingString:[encKey base64EncodedString]];
- ret = [ret stringByAppendingFormat:@"\n%@",pKCS1PrivateFooter];
+ NSString *returnString = [NSString stringWithFormat:@"%@\n",pemPrivateHeader];
+ returnString = [returnString stringByAppendingString:[encKey base64EncodedString]];
+ returnString = [returnString stringByAppendingFormat:@"\n%@",pemPrivateFooter];
  
- NSLog(@"\nPEM formatted key:\n%@\n\n",ret);
+ NSLog(@"\nPEM formatted key:\n%@\n\n",returnString);
  
- [queryPrivateKey release];
  [encKey release];
- return ret;
+ return returnString;
 }
 
 
--(NSString *)getPublicKeyX509Formatted:(BOOL)formatBool
+-(NSString *)getX509FormattedPublicKey
 { 
  NSData * publicTag = [NSData dataWithBytes:publicKeyIdentifier length:strlen((const char *) publicKeyIdentifier)];
  
- // Now lets extract the public key - build query to get bits
- NSMutableDictionary * queryPublicKey = [[NSMutableDictionary alloc] init];
- 
+ NSMutableDictionary * queryPublicKey = [[[NSMutableDictionary alloc] init] autorelease];
  [queryPublicKey setObject:(id)kSecClassKey forKey:(id)kSecClass];
  [queryPublicKey setObject:publicTag forKey:(id)kSecAttrApplicationTag];
  [queryPublicKey setObject:(id)kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
@@ -256,159 +224,134 @@ size_t encodeLength(unsigned char * buf, size_t length)
  
  if (err != noErr)
  {
-  [queryPublicKey release];
   return nil;
  }
  
- // OK - that gives us the "BITSTRING component of a full DER
- // encoded RSA public key - we now need to build the rest
- 
  unsigned char builder[15];
- NSMutableData * encKey = [[NSMutableData alloc] init];
+ NSMutableData *encKey = [[NSMutableData alloc] init];
  int bitstringEncLength;
  
- // When we get to the bitstring - how will we encode it?
  if  ([publicKeyBits length ] + 1  < 128 )
   bitstringEncLength = 1 ;
  else
   bitstringEncLength = (([publicKeyBits length ] +1 ) / 256 ) + 2 ; 
  
- // Overall we have a sequence of a certain length
- builder[0] = 0x30;    // ASN.1 encoding representing a SEQUENCE
- // Build up overall size made up of -
- // size of OID + size of bitstring encoding + size of actual key
+ builder[0] = 0x30;
  size_t i = sizeof(oidSequence) + 2 + bitstringEncLength + [publicKeyBits length];
  size_t j = encodeLength(&builder[1], i);
+ [encKey appendBytes:builder length:j +1];
  
- if (formatBool)
- {
-  [encKey appendBytes:builder length:j +1];
-  
-  // First part of the sequence is the OID
-  [encKey appendBytes:oidSequence length:sizeof(oidSequence)];
-  
-  // Now add the bitstring
-  builder[0] = 0x03;
-  j = encodeLength(&builder[1], [publicKeyBits length] + 1);
-  builder[j+1] = 0x00;
-  [encKey appendBytes:builder length:j + 2];
- }
+ [encKey appendBytes:oidSequence length:sizeof(oidSequence)];
  
- // Now the actual key
+ builder[0] = 0x03;
+ j = encodeLength(&builder[1], [publicKeyBits length] + 1);
+ builder[j+1] = 0x00;
+ [encKey appendBytes:builder length:j + 2];
+ 
  [encKey appendData:publicKeyBits];
  [publicKeyBits release];
  
- // Now translate the result to a Base64 string
- NSString *ret;
- if (formatBool)
- {
-  ret = [NSString stringWithFormat:@"%@\n",x509PublicHeader];
-  ret = [ret stringByAppendingString:[encKey base64EncodedString]];
-  ret = [ret stringByAppendingFormat:@"\n%@",x509PublicFooter];
-  
-  NSLog(@"\nX.509 formatted key:\n%@\n\n",ret);
- }
- else
- {
-  ret = [NSString stringWithFormat:@"%@\n",pKCS1PublicHeader];
-  ret = [ret stringByAppendingString:[encKey base64EncodedString]];
-  ret = [ret stringByAppendingFormat:@"\n%@",pKCS1PublicFooter];
-  
-  NSLog(@"\nPKCS1 formatted key:\n%@\n\n",ret);
- }
- [queryPublicKey release];
+ NSString *returnString = [NSString stringWithFormat:@"%@\n",x509PublicHeader];
+ returnString = [returnString stringByAppendingString:[encKey base64EncodedString]];
+ returnString = [returnString stringByAppendingFormat:@"\n%@",x509PublicFooter];
+ 
+ NSLog(@"\nPEM formatted key:\n%@\n\n",returnString);
+ 
  [encKey release];
- return ret;
+ return returnString;
 }
 
 
 
--(BOOL)setPKCS1PrivateKey:(NSString *)pKCS1PrivateKeyString
+- (BOOL)setPrivateKey:(NSString *)pemPrivateKeyString
 {
- NSString *strippedKey = [NSString string];
- NSArray  *stringArrayOfKeyComponents = [pKCS1PrivateKeyString componentsSeparatedByString:@"\n"];
- 
- BOOL notFinished = NO;
- 
- for (NSString *line in stringArrayOfKeyComponents)
- {
-  if ([line isEqual:pKCS1PrivateHeader])
-   notFinished = YES;
-  else if ([line isEqual:pKCS1PrivateFooter])
-   notFinished = NO;
-  else if (notFinished)
-   strippedKey = [strippedKey stringByAppendingString:line];
- }
- if (strippedKey.length == 0)
-  return NO;
- 
- // This will be base64 encoded, decode it.
- NSData *strippedPrivateKeyData = [NSData dataFromBase64String:strippedKey];
- 
- if (VERBOSE)
-  NSLog(@"\nStripped Private Key Base 64:\n%@\n\n",strippedKey);
- 
  NSData *privateTag = [NSData dataWithBytes:privateKeyIdentifier length:strlen((const char *)privateKeyIdentifier)];
  
- // Delete any old lingering key with the same tag
- NSMutableDictionary *privateKey = [[NSMutableDictionary alloc] init];
+ NSMutableDictionary *privateKey = [[[NSMutableDictionary alloc] init] autorelease];
  [privateKey setObject:(id) kSecClassKey forKey:(id)kSecClass];
  [privateKey setObject:(id) kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
  [privateKey setObject:privateTag forKey:(id)kSecAttrApplicationTag];
  SecItemDelete((CFDictionaryRef)privateKey);
  
- CFTypeRef persistKey = nil;
+ NSString *strippedKey = [NSString string];
+ NSArray  *stringArrayOfKeyComponents = [pemPrivateKeyString componentsSeparatedByString:@"\n"];
  
- // Add persistent version of the key to system keychain
+ BOOL notFinished = NO;
+ 
+ for (NSString *line in stringArrayOfKeyComponents)
+ {
+  if ([line isEqual:pemPrivateHeader])
+   notFinished = YES;
+  else if ([line isEqual:pemPrivateFooter])
+   notFinished = NO;
+  else if (notFinished)
+   strippedKey = [strippedKey stringByAppendingString:line];
+ }
+ if (strippedKey.length == 0)
+ {
+  return NO;
+ }
+ 
+ NSData *strippedPrivateKeyData = [NSData dataFromBase64String:strippedKey];
+ 
+ if (VERBOSE)
+  NSLog(@"\nStripped Private Key Base 64:\n%@\n\n",strippedKey);
+ 
+ CFTypeRef persistKey = nil;
  [privateKey setObject:strippedPrivateKeyData forKey:(id)kSecValueData];
  [privateKey setObject:(id) kSecAttrKeyClassPrivate forKey:(id)kSecAttrKeyClass];
  [privateKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnPersistentRef];
  
  OSStatus secStatus = SecItemAdd((CFDictionaryRef)privateKey, &persistKey);
  
- if (VERBOSE)
-  NSLog(@"\nPrivate key keychain addition status: %lu",secStatus);
- 
  if (persistKey != nil) CFRelease(persistKey);
  
  if ((secStatus != noErr) && (secStatus != errSecDuplicateItem))
- {
-  [privateKey release];
   return NO;
- }
  
- // Now fetch the SecKeyRef version of the key
  SecKeyRef keyRef = nil;
- 
  [privateKey removeObjectForKey:(id)kSecValueData];
  [privateKey removeObjectForKey:(id)kSecReturnPersistentRef];
  [privateKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnRef];
  [privateKey setObject:(id) kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
  
- secStatus = SecItemCopyMatching((CFDictionaryRef)privateKey,(CFTypeRef *)&keyRef);
+ SecItemCopyMatching((CFDictionaryRef)privateKey,(CFTypeRef *)&keyRef);
  
- [privateKey release];
  if(keyRef) CFRelease(keyRef);
  
- if (keyRef == nil || secStatus) return NO;
- 
+ if (keyRef == nil) return NO;
+
  return YES;
 }
 
 
 
-- (BOOL)setPublicKey:(NSString *)pemPublicKeyString isX509Formatted:(BOOL)formatBool
+- (BOOL)setPublicKey:(NSString *)pemPublicKeyString
 {
+ NSData * publicTag = [NSData dataWithBytes:publicKeyIdentifier length:strlen((const char *)publicKeyIdentifier)];
+ 
+ NSMutableDictionary *publicKey = [[[NSMutableDictionary alloc] init] autorelease];
+ [publicKey setObject:(id) kSecClassKey forKey:(id)kSecClass];
+ [publicKey setObject:(id) kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
+ [publicKey setObject:publicTag forKey:(id)kSecAttrApplicationTag];
+ SecItemDelete((CFDictionaryRef)publicKey);
+ 
  NSString *strippedKey = [NSString string];
  NSArray  *stringArrayOfKeyComponents = [pemPublicKeyString componentsSeparatedByString:@"\n"];
  
  BOOL notFinished = NO;
+ BOOL isX509 = NO;
  
  for (NSString *line in stringArrayOfKeyComponents)
  {
   if ([line isEqual:x509PublicHeader])
+  {
    notFinished = YES;
-  else if ([line isEqual:x509PublicFooter])
+   isX509 = YES;
+  }
+  else if ([line isEqual:pKCS1PublicHeader])
+   notFinished = YES;
+  else if ([line isEqual:pKCS1PublicFooter] || [line isEqual:x509PublicFooter])
    notFinished = NO;
   else if (notFinished)
    strippedKey = [strippedKey stringByAppendingString:line];
@@ -416,15 +359,10 @@ size_t encodeLength(unsigned char * buf, size_t length)
  if (strippedKey.length == 0)
   return NO;
  
- // This will be base64 encoded, decode it.
  NSData *strippedPublicKeyData = [NSData dataFromBase64String:strippedKey];
- 
- if (VERBOSE)
- {
-  NSLog(@"\nPublic Key Base 64:\n%@\n\n",strippedKey);
-  NSLog(@"\nPublic Key Hexadecimal:\n%@\n\n",[strippedPublicKeyData description]);
- }
- if (formatBool)
+ NSLog(@"\nPublic Key Bytes:\n%@\n\n",[strippedPublicKeyData description]);
+
+ if (isX509)
  {
   unsigned char * bytes = (unsigned char *)[strippedPublicKeyData bytes];
   size_t bytesLen = [strippedPublicKeyData length];
@@ -472,56 +410,36 @@ size_t encodeLength(unsigned char * buf, size_t length)
   strippedPublicKeyData = [NSData dataWithBytes:&bytes[i] length:bytesLen - i];
  }
  
- if (VERBOSE)
- {
-  NSLog(@"\nStripped Public Key Base 64:\n%@\n\n",strippedKey);
-  NSLog(@"\nStripped Public Key Hexadecimal:\n%@\n\n",[strippedPublicKeyData description]);
- }
+ if (strippedPublicKeyData == nil)
+  return NO;
  
- NSData * publicTag = [NSData dataWithBytes:publicKeyIdentifier length:strlen((const char *)publicKeyIdentifier)];
-
- // Delete any old lingering key with the same tag
- NSMutableDictionary *publicKey = [[NSMutableDictionary alloc] init];
- [publicKey setObject:(id) kSecClassKey forKey:(id)kSecClass];
- [publicKey setObject:(id) kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
- [publicKey setObject:publicTag forKey:(id)kSecAttrApplicationTag];
- SecItemDelete((CFDictionaryRef)publicKey);
+ if (VERBOSE)
+  NSLog(@"\nStripped Public Key Bytes:\n%@\n\n",[strippedPublicKeyData description]);
  
  CFTypeRef persistKey = nil;
- 
- // Add persistent version of the key to system keychain
  [publicKey setObject:strippedPublicKeyData forKey:(id)kSecValueData];
  [publicKey setObject:(id) kSecAttrKeyClassPublic forKey:(id)kSecAttrKeyClass];
  [publicKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnPersistentRef];
  
  OSStatus secStatus = SecItemAdd((CFDictionaryRef)publicKey, &persistKey);
-
- if (VERBOSE)
-  NSLog(@"\nPublic key keychain addition status: %lu",secStatus);
  
  if (persistKey != nil) CFRelease(persistKey);
  
  if ((secStatus != noErr) && (secStatus != errSecDuplicateItem))
- {
-  [publicKey release];
   return NO;
- }
  
- // Now fetch the SecKeyRef version of the key
  SecKeyRef keyRef = nil;
- 
  [publicKey removeObjectForKey:(id)kSecValueData];
  [publicKey removeObjectForKey:(id)kSecReturnPersistentRef];
  [publicKey setObject:[NSNumber numberWithBool:YES] forKey:(id)kSecReturnRef];
  [publicKey setObject:(id) kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
  
- secStatus = SecItemCopyMatching((CFDictionaryRef)publicKey,(CFTypeRef *)&keyRef);
+ SecItemCopyMatching((CFDictionaryRef)publicKey,(CFTypeRef *)&keyRef);
  
- [publicKey release];
  if(keyRef) CFRelease(keyRef);
  
- if (keyRef == nil || secStatus) return NO;
-  
+ if (keyRef == nil) return NO;
+ 
  return YES;
 }
 
@@ -537,7 +455,6 @@ size_t encodeLength(unsigned char * buf, size_t length)
  NSData *publicTag = [NSData dataWithBytes:publicKeyIdentifier length:strlen((const char *)publicKeyIdentifier)];
  NSData *privateTag = [NSData dataWithBytes:privateKeyIdentifier length:strlen((const char *)privateKeyIdentifier)];
  
- // Delete any old lingering key with the same tag
  NSMutableDictionary *privateKeyDictionary = [[NSMutableDictionary alloc] init];
  [privateKeyDictionary setObject:(id) kSecClassKey forKey:(id)kSecClass];
  [privateKeyDictionary setObject:(id) kSecAttrKeyTypeRSA forKey:(id)kSecAttrKeyType];
