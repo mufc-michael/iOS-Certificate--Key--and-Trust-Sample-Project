@@ -6,7 +6,7 @@ These functions are slightly modified (fixing typos) from functions given in App
 -(NSString *)encryptWithPublicKey:(NSString *)plainTextString;
 -(NSString *)decryptWithPrivateKey:(NSString *)inputString;
 
-The following methods are designed to import PEM formatted RSA keys from strings and place in your keychain (slightly modified from this wonderful resources: http://blog.wingsofhermes.org/?p=42 and http://blog.wingsofhermes.org/?p=75):
+The following methods are designed to import PEM formatted RSA keys from strings and place in your keychain (slightly modified from these wonderful resources: http://blog.wingsofhermes.org/?p=42 and http://blog.wingsofhermes.org/?p=75):
 
 -(BOOL)setPublicKey:(NSString *)publicKeyString isX509Formatted:(BOOL)formatBool;
 -(BOOL)setPKCS1PrivateKey:(NSString *)pKCS1PrivateKeyString;
