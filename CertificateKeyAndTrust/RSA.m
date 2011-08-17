@@ -274,23 +274,13 @@ size_t encodeLength(unsigned char * buf, size_t length)
  SecItemDelete((CFDictionaryRef)privateKey);
  
  NSString *strippedKey = [NSString string];
- NSArray  *stringArrayOfKeyComponents = [pemPrivateKeyString componentsSeparatedByString:@"\n"];
- 
- BOOL notFinished = NO;
- 
- for (NSString *line in stringArrayOfKeyComponents)
+ if (([pemPrivateKeyString rangeOfString:pemPrivateHeader].location != NSNotFound) && ([pemPrivateKeyString rangeOfString:pemPrivateFooter].location != NSNotFound))
  {
-  if ([line isEqual:pemPrivateHeader])
-   notFinished = YES;
-  else if ([line isEqual:pemPrivateFooter])
-   notFinished = NO;
-  else if (notFinished)
-   strippedKey = [strippedKey stringByAppendingString:line];
+  strippedKey = [[pemPrivateKeyString stringByReplacingOccurrencesOfString:pemPrivateHeader withString:@""] stringByReplacingOccurrencesOfString:pemPrivateFooter withString:@""];
+  strippedKey = [[strippedKey stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
  }
- if (strippedKey.length == 0)
- {
+ else
   return NO;
- }
  
  NSData *strippedPrivateKeyData = [NSData dataFromBase64String:strippedKey];
  
@@ -336,27 +326,24 @@ size_t encodeLength(unsigned char * buf, size_t length)
  [publicKey setObject:publicTag forKey:(id)kSecAttrApplicationTag];
  SecItemDelete((CFDictionaryRef)publicKey);
  
- NSString *strippedKey = [NSString string];
- NSArray  *stringArrayOfKeyComponents = [pemPublicKeyString componentsSeparatedByString:@"\n"];
- 
- BOOL notFinished = NO;
  BOOL isX509 = NO;
  
- for (NSString *line in stringArrayOfKeyComponents)
+ NSString *strippedKey = [NSString string];
+ if (([pemPublicKeyString rangeOfString:x509PublicHeader].location != NSNotFound) && ([pemPublicKeyString rangeOfString:x509PublicFooter].location != NSNotFound))
  {
-  if ([line isEqual:x509PublicHeader])
-  {
-   notFinished = YES;
-   isX509 = YES;
-  }
-  else if ([line isEqual:pKCS1PublicHeader])
-   notFinished = YES;
-  else if ([line isEqual:pKCS1PublicFooter] || [line isEqual:x509PublicFooter])
-   notFinished = NO;
-  else if (notFinished)
-   strippedKey = [strippedKey stringByAppendingString:line];
+  strippedKey = [[pemPublicKeyString stringByReplacingOccurrencesOfString:x509PublicHeader withString:@""] stringByReplacingOccurrencesOfString:x509PublicFooter withString:@""];
+  strippedKey = [[strippedKey stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+  
+  isX509 = YES;
  }
- if (strippedKey.length == 0)
+ else if (([pemPublicKeyString rangeOfString:pKCS1PublicHeader].location != NSNotFound) && ([pemPublicKeyString rangeOfString:pKCS1PublicFooter].location != NSNotFound))
+ {
+  strippedKey = [[pemPublicKeyString stringByReplacingOccurrencesOfString:pKCS1PublicHeader withString:@""] stringByReplacingOccurrencesOfString:pKCS1PublicFooter withString:@""];
+  strippedKey = [[strippedKey stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+  
+  isX509 = NO;
+ }
+ else
   return NO;
  
  NSData *strippedPublicKeyData = [NSData dataFromBase64String:strippedKey];
