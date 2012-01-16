@@ -7,135 +7,142 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD487C1013B5476600D0B97C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD487C0F13B5476600D0B97C /* UIKit.framework */; };
-		CD487C1213B5476600D0B97C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD487C1113B5476600D0B97C /* Foundation.framework */; };
-		CD487C1413B5476600D0B97C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD487C1313B5476600D0B97C /* CoreGraphics.framework */; };
-		CD487C1A13B5476600D0B97C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD487C1813B5476600D0B97C /* InfoPlist.strings */; };
-		CD487C1D13B5476600D0B97C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD487C1C13B5476600D0B97C /* main.m */; };
-		CD487C2013B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD487C1F13B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.m */; };
-		CD487C2313B5476600D0B97C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD487C2113B5476600D0B97C /* MainWindow.xib */; };
-		CD487C2A13B5477A00D0B97C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD487C2913B5477A00D0B97C /* Security.framework */; };
-		CD487C2D13B547B600D0B97C /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = CD487C2C13B547B600D0B97C /* RSA.m */; };
-		CD487C4013B54CA000D0B97C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CD487C3F13B54CA000D0B97C /* NSData+Base64.m */; };
-		CD49954D13CE196600B9EA26 /* pkcs1PrivateKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = CD49954B13CE196600B9EA26 /* pkcs1PrivateKey.pem */; };
-		CD49954E13CE196600B9EA26 /* x509PublicKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = CD49954C13CE196600B9EA26 /* x509PublicKey.pem */; };
-		E7218F9813B7AD7B00B9A5D8 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = E7218F9713B7AD7B00B9A5D8 /* Global.m */; };
+		E745700914C3D6EB00E7AEE1 /* publicKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = E745700814C3D6EB00E7AEE1 /* publicKey.pem */; };
+		E745700C14C3D6FB00E7AEE1 /* privateKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = E745700B14C3D6FB00E7AEE1 /* privateKey.pem */; };
+		F497D06F14C3D42B00EC6EE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497D06E14C3D42B00EC6EE5 /* UIKit.framework */; };
+		F497D07114C3D42B00EC6EE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497D07014C3D42B00EC6EE5 /* Foundation.framework */; };
+		F497D07314C3D42B00EC6EE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497D07214C3D42B00EC6EE5 /* CoreGraphics.framework */; };
+		F497D07914C3D42B00EC6EE5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F497D07714C3D42B00EC6EE5 /* InfoPlist.strings */; };
+		F497D07B14C3D42B00EC6EE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D07A14C3D42B00EC6EE5 /* main.m */; };
+		F497D07F14C3D42B00EC6EE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D07E14C3D42B00EC6EE5 /* AppDelegate.m */; };
+		F497D09214C3D44700EC6EE5 /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D08614C3D44700EC6EE5 /* Crypto.m */; };
+		F497D09314C3D44700EC6EE5 /* Exception.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D08814C3D44700EC6EE5 /* Exception.m */; };
+		F497D09414C3D44700EC6EE5 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D08A14C3D44700EC6EE5 /* Global.m */; };
+		F497D09514C3D44700EC6EE5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D08C14C3D44700EC6EE5 /* NSData+Base64.m */; };
+		F497D09614C3D44700EC6EE5 /* NSDictionary+ParseJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D08E14C3D44700EC6EE5 /* NSDictionary+ParseJSON.m */; };
+		F497D09714C3D44700EC6EE5 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F497D08F14C3D44700EC6EE5 /* View.xib */; };
+		F497D09814C3D44700EC6EE5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F497D09114C3D44700EC6EE5 /* ViewController.m */; };
+		F497D0C114C3D48C00EC6EE5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497D0C014C3D48C00EC6EE5 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CD487C0B13B5476600D0B97C /* CertificateKeyAndTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CertificateKeyAndTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD487C0F13B5476600D0B97C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CD487C1113B5476600D0B97C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CD487C1313B5476600D0B97C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CD487C1713B5476600D0B97C /* CertificateKeyAndTrust-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CertificateKeyAndTrust-Info.plist"; sourceTree = "<group>"; };
-		CD487C1913B5476600D0B97C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CD487C1B13B5476600D0B97C /* CertificateKeyAndTrust-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CertificateKeyAndTrust-Prefix.pch"; sourceTree = "<group>"; };
-		CD487C1C13B5476600D0B97C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CD487C1E13B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificateKeyAndTrustAppDelegate.h; sourceTree = "<group>"; };
-		CD487C1F13B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificateKeyAndTrustAppDelegate.m; sourceTree = "<group>"; };
-		CD487C2213B5476600D0B97C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		CD487C2913B5477A00D0B97C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		CD487C2B13B547B600D0B97C /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
-		CD487C2C13B547B600D0B97C /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
-		CD487C3E13B54CA000D0B97C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		CD487C3F13B54CA000D0B97C /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		CD49954B13CE196600B9EA26 /* pkcs1PrivateKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pkcs1PrivateKey.pem; sourceTree = "<group>"; };
-		CD49954C13CE196600B9EA26 /* x509PublicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = x509PublicKey.pem; sourceTree = "<group>"; };
-		E7218F9613B7AD7B00B9A5D8 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
-		E7218F9713B7AD7B00B9A5D8 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		E745700814C3D6EB00E7AEE1 /* publicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = publicKey.pem; sourceTree = "<group>"; };
+		E745700B14C3D6FB00E7AEE1 /* privateKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privateKey.pem; sourceTree = "<group>"; };
+		F497D06A14C3D42B00EC6EE5 /* CertificateKeyAndTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CertificateKeyAndTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F497D06E14C3D42B00EC6EE5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F497D07014C3D42B00EC6EE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F497D07214C3D42B00EC6EE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F497D07614C3D42B00EC6EE5 /* CertificateKeyAndTrust-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CertificateKeyAndTrust-Info.plist"; sourceTree = "<group>"; };
+		F497D07814C3D42B00EC6EE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F497D07A14C3D42B00EC6EE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F497D07C14C3D42B00EC6EE5 /* CertificateKeyAndTrust-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CertificateKeyAndTrust-Prefix.pch"; sourceTree = "<group>"; };
+		F497D07D14C3D42B00EC6EE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F497D07E14C3D42B00EC6EE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F497D08514C3D44700EC6EE5 /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
+		F497D08614C3D44700EC6EE5 /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
+		F497D08714C3D44700EC6EE5 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		F497D08814C3D44700EC6EE5 /* Exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exception.m; sourceTree = "<group>"; };
+		F497D08914C3D44700EC6EE5 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		F497D08A14C3D44700EC6EE5 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		F497D08B14C3D44700EC6EE5 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		F497D08C14C3D44700EC6EE5 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		F497D08D14C3D44700EC6EE5 /* NSDictionary+ParseJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ParseJSON.h"; sourceTree = "<group>"; };
+		F497D08E14C3D44700EC6EE5 /* NSDictionary+ParseJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ParseJSON.m"; sourceTree = "<group>"; };
+		F497D08F14C3D44700EC6EE5 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		F497D09014C3D44700EC6EE5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F497D09114C3D44700EC6EE5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F497D0C014C3D48C00EC6EE5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CD487C0813B5476500D0B97C /* Frameworks */ = {
+		F497D06714C3D42B00EC6EE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD487C2A13B5477A00D0B97C /* Security.framework in Frameworks */,
-				CD487C1013B5476600D0B97C /* UIKit.framework in Frameworks */,
-				CD487C1213B5476600D0B97C /* Foundation.framework in Frameworks */,
-				CD487C1413B5476600D0B97C /* CoreGraphics.framework in Frameworks */,
+				F497D0C114C3D48C00EC6EE5 /* Security.framework in Frameworks */,
+				F497D06F14C3D42B00EC6EE5 /* UIKit.framework in Frameworks */,
+				F497D07114C3D42B00EC6EE5 /* Foundation.framework in Frameworks */,
+				F497D07314C3D42B00EC6EE5 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CD487C0013B5476500D0B97C = {
+		F497D05F14C3D42B00EC6EE5 = {
 			isa = PBXGroup;
 			children = (
-				CD487C1513B5476600D0B97C /* CertificateKeyAndTrust */,
-				CD487C0E13B5476600D0B97C /* Frameworks */,
-				CD487C0C13B5476600D0B97C /* Products */,
+				F497D07414C3D42B00EC6EE5 /* CertificateKeyAndTrust */,
+				F497D06D14C3D42B00EC6EE5 /* Frameworks */,
+				F497D06B14C3D42B00EC6EE5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CD487C0C13B5476600D0B97C /* Products */ = {
+		F497D06B14C3D42B00EC6EE5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD487C0B13B5476600D0B97C /* CertificateKeyAndTrust.app */,
+				F497D06A14C3D42B00EC6EE5 /* CertificateKeyAndTrust.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CD487C0E13B5476600D0B97C /* Frameworks */ = {
+		F497D06D14C3D42B00EC6EE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD487C2913B5477A00D0B97C /* Security.framework */,
-				CD487C0F13B5476600D0B97C /* UIKit.framework */,
-				CD487C1113B5476600D0B97C /* Foundation.framework */,
-				CD487C1313B5476600D0B97C /* CoreGraphics.framework */,
+				F497D06E14C3D42B00EC6EE5 /* UIKit.framework */,
+				F497D07014C3D42B00EC6EE5 /* Foundation.framework */,
+				F497D07214C3D42B00EC6EE5 /* CoreGraphics.framework */,
+				F497D0C014C3D48C00EC6EE5 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CD487C1513B5476600D0B97C /* CertificateKeyAndTrust */ = {
+		F497D07414C3D42B00EC6EE5 /* CertificateKeyAndTrust */ = {
 			isa = PBXGroup;
 			children = (
-				CD487C1E13B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.h */,
-				CD487C1F13B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.m */,
-				CD487C2B13B547B600D0B97C /* RSA.h */,
-				CD487C2C13B547B600D0B97C /* RSA.m */,
-				E7218F9613B7AD7B00B9A5D8 /* Global.h */,
-				E7218F9713B7AD7B00B9A5D8 /* Global.m */,
-				CD487C3E13B54CA000D0B97C /* NSData+Base64.h */,
-				CD487C3F13B54CA000D0B97C /* NSData+Base64.m */,
-				CD487C2113B5476600D0B97C /* MainWindow.xib */,
-				CD49955013CE197000B9EA26 /* Resources */,
-				CD487C1613B5476600D0B97C /* Supporting Files */,
+				F497D07D14C3D42B00EC6EE5 /* AppDelegate.h */,
+				F497D07E14C3D42B00EC6EE5 /* AppDelegate.m */,
+				F497D08514C3D44700EC6EE5 /* Crypto.h */,
+				F497D08614C3D44700EC6EE5 /* Crypto.m */,
+				F497D08714C3D44700EC6EE5 /* Exception.h */,
+				F497D08814C3D44700EC6EE5 /* Exception.m */,
+				F497D08914C3D44700EC6EE5 /* Global.h */,
+				F497D08A14C3D44700EC6EE5 /* Global.m */,
+				F497D08B14C3D44700EC6EE5 /* NSData+Base64.h */,
+				F497D08C14C3D44700EC6EE5 /* NSData+Base64.m */,
+				F497D08D14C3D44700EC6EE5 /* NSDictionary+ParseJSON.h */,
+				F497D08E14C3D44700EC6EE5 /* NSDictionary+ParseJSON.m */,
+				F497D08F14C3D44700EC6EE5 /* View.xib */,
+				F497D09014C3D44700EC6EE5 /* ViewController.h */,
+				F497D09114C3D44700EC6EE5 /* ViewController.m */,
+				F497D07514C3D42B00EC6EE5 /* Supporting Files */,
 			);
 			path = CertificateKeyAndTrust;
 			sourceTree = "<group>";
 		};
-		CD487C1613B5476600D0B97C /* Supporting Files */ = {
+		F497D07514C3D42B00EC6EE5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD487C1713B5476600D0B97C /* CertificateKeyAndTrust-Info.plist */,
-				CD487C1813B5476600D0B97C /* InfoPlist.strings */,
-				CD487C1B13B5476600D0B97C /* CertificateKeyAndTrust-Prefix.pch */,
-				CD487C1C13B5476600D0B97C /* main.m */,
+				F497D07614C3D42B00EC6EE5 /* CertificateKeyAndTrust-Info.plist */,
+				F497D07714C3D42B00EC6EE5 /* InfoPlist.strings */,
+				F497D07A14C3D42B00EC6EE5 /* main.m */,
+				F497D07C14C3D42B00EC6EE5 /* CertificateKeyAndTrust-Prefix.pch */,
+				E745700814C3D6EB00E7AEE1 /* publicKey.pem */,
+				E745700B14C3D6FB00E7AEE1 /* privateKey.pem */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CD49955013CE197000B9EA26 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CD49954B13CE196600B9EA26 /* pkcs1PrivateKey.pem */,
-				CD49954C13CE196600B9EA26 /* x509PublicKey.pem */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD487C0A13B5476500D0B97C /* CertificateKeyAndTrust */ = {
+		F497D06914C3D42B00EC6EE5 /* CertificateKeyAndTrust */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD487C2613B5476600D0B97C /* Build configuration list for PBXNativeTarget "CertificateKeyAndTrust" */;
+			buildConfigurationList = F497D08214C3D42B00EC6EE5 /* Build configuration list for PBXNativeTarget "CertificateKeyAndTrust" */;
 			buildPhases = (
-				CD487C0713B5476500D0B97C /* Sources */,
-				CD487C0813B5476500D0B97C /* Frameworks */,
-				CD487C0913B5476500D0B97C /* Resources */,
+				F497D06614C3D42B00EC6EE5 /* Sources */,
+				F497D06714C3D42B00EC6EE5 /* Frameworks */,
+				F497D06814C3D42B00EC6EE5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -143,121 +150,124 @@
 			);
 			name = CertificateKeyAndTrust;
 			productName = CertificateKeyAndTrust;
-			productReference = CD487C0B13B5476600D0B97C /* CertificateKeyAndTrust.app */;
+			productReference = F497D06A14C3D42B00EC6EE5 /* CertificateKeyAndTrust.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CD487C0213B5476500D0B97C /* Project object */ = {
+		F497D06114C3D42B00EC6EE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "Kuapay LLC.";
+				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = CD487C0513B5476500D0B97C /* Build configuration list for PBXProject "CertificateKeyAndTrust" */;
+			buildConfigurationList = F497D06414C3D42B00EC6EE5 /* Build configuration list for PBXProject "CertificateKeyAndTrust" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = CD487C0013B5476500D0B97C;
-			productRefGroup = CD487C0C13B5476600D0B97C /* Products */;
+			mainGroup = F497D05F14C3D42B00EC6EE5;
+			productRefGroup = F497D06B14C3D42B00EC6EE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD487C0A13B5476500D0B97C /* CertificateKeyAndTrust */,
+				F497D06914C3D42B00EC6EE5 /* CertificateKeyAndTrust */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD487C0913B5476500D0B97C /* Resources */ = {
+		F497D06814C3D42B00EC6EE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD487C1A13B5476600D0B97C /* InfoPlist.strings in Resources */,
-				CD487C2313B5476600D0B97C /* MainWindow.xib in Resources */,
-				CD49954D13CE196600B9EA26 /* pkcs1PrivateKey.pem in Resources */,
-				CD49954E13CE196600B9EA26 /* x509PublicKey.pem in Resources */,
+				F497D07914C3D42B00EC6EE5 /* InfoPlist.strings in Resources */,
+				F497D09714C3D44700EC6EE5 /* View.xib in Resources */,
+				E745700914C3D6EB00E7AEE1 /* publicKey.pem in Resources */,
+				E745700C14C3D6FB00E7AEE1 /* privateKey.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CD487C0713B5476500D0B97C /* Sources */ = {
+		F497D06614C3D42B00EC6EE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD487C1D13B5476600D0B97C /* main.m in Sources */,
-				CD487C2013B5476600D0B97C /* CertificateKeyAndTrustAppDelegate.m in Sources */,
-				CD487C2D13B547B600D0B97C /* RSA.m in Sources */,
-				CD487C4013B54CA000D0B97C /* NSData+Base64.m in Sources */,
-				E7218F9813B7AD7B00B9A5D8 /* Global.m in Sources */,
+				F497D07B14C3D42B00EC6EE5 /* main.m in Sources */,
+				F497D07F14C3D42B00EC6EE5 /* AppDelegate.m in Sources */,
+				F497D09214C3D44700EC6EE5 /* Crypto.m in Sources */,
+				F497D09314C3D44700EC6EE5 /* Exception.m in Sources */,
+				F497D09414C3D44700EC6EE5 /* Global.m in Sources */,
+				F497D09514C3D44700EC6EE5 /* NSData+Base64.m in Sources */,
+				F497D09614C3D44700EC6EE5 /* NSDictionary+ParseJSON.m in Sources */,
+				F497D09814C3D44700EC6EE5 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CD487C1813B5476600D0B97C /* InfoPlist.strings */ = {
+		F497D07714C3D42B00EC6EE5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CD487C1913B5476600D0B97C /* en */,
+				F497D07814C3D42B00EC6EE5 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CD487C2113B5476600D0B97C /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD487C2213B5476600D0B97C /* en */,
-			);
-			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CD487C2413B5476600D0B97C /* Debug */ = {
+		F497D08014C3D42B00EC6EE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		CD487C2513B5476600D0B97C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
-			};
-			name = Release;
-		};
-		CD487C2713B5476600D0B97C /* Debug */ = {
+		F497D08114C3D42B00EC6EE5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F497D08314C3D42B00EC6EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch";
 				INFOPLIST_FILE = "CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist";
@@ -266,16 +276,13 @@
 			};
 			name = Debug;
 		};
-		CD487C2813B5476600D0B97C /* Release */ = {
+		F497D08414C3D42B00EC6EE5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CertificateKeyAndTrust/CertificateKeyAndTrust-Prefix.pch";
 				INFOPLIST_FILE = "CertificateKeyAndTrust/CertificateKeyAndTrust-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -283,25 +290,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD487C0513B5476500D0B97C /* Build configuration list for PBXProject "CertificateKeyAndTrust" */ = {
+		F497D06414C3D42B00EC6EE5 /* Build configuration list for PBXProject "CertificateKeyAndTrust" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD487C2413B5476600D0B97C /* Debug */,
-				CD487C2513B5476600D0B97C /* Release */,
+				F497D08014C3D42B00EC6EE5 /* Debug */,
+				F497D08114C3D42B00EC6EE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD487C2613B5476600D0B97C /* Build configuration list for PBXNativeTarget "CertificateKeyAndTrust" */ = {
+		F497D08214C3D42B00EC6EE5 /* Build configuration list for PBXNativeTarget "CertificateKeyAndTrust" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD487C2713B5476600D0B97C /* Debug */,
-				CD487C2813B5476600D0B97C /* Release */,
+				F497D08314C3D42B00EC6EE5 /* Debug */,
+				F497D08414C3D42B00EC6EE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CD487C0213B5476500D0B97C /* Project object */;
+	rootObject = F497D06114C3D42B00EC6EE5 /* Project object */;
 }

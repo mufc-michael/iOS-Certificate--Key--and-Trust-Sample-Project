@@ -20,7 +20,9 @@
 //  3. This notice may not be removed or altered from any source
 //     distribution.
 //
+
 #import "NSData+Base64.h"
+#import <CommonCrypto/CommonCryptor.h>
 
 //
 // Mapping from 6 bit pattern to ASCII character.
@@ -276,6 +278,7 @@ char *NewBase64Encode(
 //
 + (NSData *)dataFromBase64String:(NSString *)aString
 {
+ aString = [[[aString stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByReplacingOccurrencesOfString:@"\r" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 	NSData *data = [aString dataUsingEncoding:NSASCIIStringEncoding];
 	size_t outputLength;
 	void *outputBuffer = NewBase64Decode([data bytes], [data length], &outputLength);
@@ -306,6 +309,9 @@ char *NewBase64Encode(
 			encoding:NSASCIIStringEncoding]
 		autorelease];
 	free(outputBuffer);
+ 
+ result = [result stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+ 
 	return result;
 }
 

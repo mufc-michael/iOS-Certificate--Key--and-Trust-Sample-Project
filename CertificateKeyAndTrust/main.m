@@ -2,16 +2,17 @@
 //  main.m
 //  CertificateKeyAndTrust
 //
-//  Created by Patrick Hogan on 6/24/11.
-//  Copyright 2011 Kuapay LLC. All rights reserved.
+//  Created by Patrick Hogan on 1/15/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
+#import "AppDelegate.h"
+
 int main(int argc, char *argv[])
 {
- NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
- int retVal = UIApplicationMain(argc, argv, nil, nil);
- [pool release];
- return retVal;
+ @autoreleasepool {
+     return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+ }
 }

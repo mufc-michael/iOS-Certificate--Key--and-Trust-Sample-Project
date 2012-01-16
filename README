@@ -1,17 +1,21 @@
-This iOS 4.3 project was created in Xcode 4.  The most important class in this project is "RSA".  It contains the following functions in its public interface:
+This iOS 4.3 project was created in Xcode 4.  The most important class in this project is "Crypto".  It contains the following functions in its public interface:
 
 These functions are slightly modified (fixing typos) from functions given in Apple's Certificate, Key, and Trust Programming Guide:
 
--(void)generateKeyPair;
--(NSString *)encryptWithPublicKey:(NSString *)plainTextString;
--(NSString *)decryptWithPrivateKey:(NSString *)inputString;
++(void)generateKeyPairWithPublicTag:(NSString *)publicTagString privateTag:(NSString *)privateTagString;
 
 The following methods are designed to import PEM formatted RSA keys from strings and place in your keychain (slightly modified from these wonderful resources: http://blog.wingsofhermes.org/?p=42 and http://blog.wingsofhermes.org/?p=75):
 
--(BOOL)setPublicKey:(NSString *)publicKeyString isX509Formatted:(BOOL)formatBool;
--(BOOL)setPKCS1PrivateKey:(NSString *)pKCS1PrivateKeyString;
++(void)setPrivateKey:(NSString *)pemPrivateKeyString tag:(NSString *)tag;
++(void)setPublicKey:(NSString *)pemPublicKeyString tag:(NSString *)tag;
 
 // These methods are here to export RSA keys from keychain to strings in PEM format (Also taken from http://blog.wingsofhermes.org/?p=42 and http://blog.wingsofhermes.org/?p=75):
 
--(NSString *)getPublicKeyX509Formatted:(BOOL)formatBool;
--(NSString *)getPKCS1FormattedPrivateKey;
++(NSString *)getX509FormattedPublicKey:(NSString *)tag;
++(NSString *)getPEMFormattedPrivateKey:(NSString *)tag;
+
+// Method to remove key from keychain:
+
++(void)removeKey:(NSString *)tag;
+
+// See ViewController viewDidLoad method for example usage
