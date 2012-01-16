@@ -18,9 +18,6 @@
 
 @interface Crypto ()
 
-+(NSData *)transform:(CCOperation)encryptOrDecrypt data:(NSData *)inputData withKey:(NSString *)key;
-+(NSString *)processKey:(NSString *)key;
-
 size_t encodeLength(unsigned char * buf, size_t length);
 
 @end
@@ -40,82 +37,6 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
 
 
 #pragma mark - Encryption/Decryption Methods:
-+(NSString *)encryptAES_CBC_256:(NSString *)plainText key:(NSString *)key
-{
- key = [Crypto processKey:key];
- return [[Crypto transform:kCCEncrypt data:[plainText dataUsingEncoding:NSUTF8StringEncoding] withKey:key] base64EncodedString];  
-}  
-
-
-+(NSString *)decryptAES_CBC_256:(NSString *)cipherText key:(NSString *)key
-{
- key = [Crypto processKey:key];
- return [[[NSString alloc] initWithData:[Crypto transform:kCCDecrypt data:[NSData dataFromBase64String:cipherText]  withKey:key] encoding:NSUTF8StringEncoding] autorelease];  
-}  
-
-
-+(NSData *)transform:(CCOperation)encryptOrDecrypt data:(NSData *)inputData withKey:(NSString *)key
-{  
- NSData* secretKey = [key dataUsingEncoding:NSUTF8StringEncoding];  
- 
- CCCryptorRef cryptor = NULL;  
- CCCryptorStatus status = kCCSuccess;  
- 
- uint8_t iv[kCCBlockSizeAES128];  
- memset((void *) iv, 0x0, (size_t) sizeof(iv));  
- 
- status = CCCryptorCreate(encryptOrDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,  
-                          [secretKey bytes], kCCKeySizeAES256, iv, &cryptor);  
- 
- if (status != kCCSuccess) [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorCreate."];
- 
- size_t bufsize = CCCryptorGetOutputLength(cryptor, (size_t)[inputData length], true);  
- 
- void * buf = malloc(bufsize * sizeof(uint8_t));  
- memset(buf, 0x0, bufsize);  
- 
- size_t bufused = 0;  
- size_t bytesTotal = 0;  
- 
- status = CCCryptorUpdate(cryptor, [inputData bytes], (size_t)[inputData length],  
-                          buf, bufsize, &bufused);  
- 
- if (status != kCCSuccess)
- {  
-  free(buf);  
-  CCCryptorRelease(cryptor);  
-  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorRelease."];
- }  
- 
- bytesTotal += bufused;  
- 
- status = CCCryptorFinal(cryptor, buf + bufused, bufsize - bufused, &bufused);  
- 
- if (status != kCCSuccess)
- {  
-  free(buf);  
-  CCCryptorRelease(cryptor);  
-  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorFinal."];
- }  
- 
- bytesTotal += bufused;  
- 
- CCCryptorRelease(cryptor);  
- 
- return [NSData dataWithBytesNoCopy:buf length:bytesTotal];  
-}
-
-
-+(NSString *)processKey:(NSString *)key 
-{  
- key = [key stringByAppendingString:@"                                "];
- NSRange range = NSMakeRange(0, 32);
- key = [key substringWithRange:range];
- 
- return key;  
-}
-
-
 +(NSString *)decryptRSA:(NSString *)cipherString key:(NSString *)key
 {
  NSString *privateKeyIdentifier = [NSString stringWithFormat:@"%@.privatekey",[[NSBundle mainBundle] bundleIdentifier]];
