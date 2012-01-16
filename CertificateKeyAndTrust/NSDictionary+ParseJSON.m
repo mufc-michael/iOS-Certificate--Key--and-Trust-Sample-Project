@@ -34,7 +34,7 @@
   }
  }
   
- [Exception raise:USER_DATA_CORRUPTED function:function line:line description:[NSString stringWithFormat:@"Unexpected type exception: %@ not expected type.", name]];
+ [Exception raise:FAILURE function:function line:line description:[NSString stringWithFormat:@"Unexpected type exception: %@ not expected type.", name]];
  
  return nil;
 }

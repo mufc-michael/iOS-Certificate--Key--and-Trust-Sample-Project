@@ -32,11 +32,9 @@
  
  switch(exceptionType) 
  {
-  case USER_DATA_CORRUPTED:
+  case FAILURE:
    result = @"userDataCorrupted";
    break;
-  case FAILURE:
-   result = @"failure";
    break;
   default:
    [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Unexpected ExceptionType."];

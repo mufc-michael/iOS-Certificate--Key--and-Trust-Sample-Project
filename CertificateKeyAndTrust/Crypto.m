@@ -67,7 +67,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  status = CCCryptorCreate(encryptOrDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,  
                           [secretKey bytes], kCCKeySizeAES256, iv, &cryptor);  
  
- if (status != kCCSuccess) [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorCreate."];
+ if (status != kCCSuccess) [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorCreate."];
  
  size_t bufsize = CCCryptorGetOutputLength(cryptor, (size_t)[inputData length], true);  
  
@@ -84,7 +84,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  {  
   free(buf);  
   CCCryptorRelease(cryptor);  
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorRelease."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorRelease."];
  }  
  
  bytesTotal += bufused;  
@@ -95,7 +95,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  {  
   free(buf);  
   CCCryptorRelease(cryptor);  
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorFinal."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  CCCryptorFinal."];
  }  
  
  bytesTotal += bufused;  
@@ -141,7 +141,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  {
   if(privateKey) CFRelease(privateKey);
 
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  Packet too large."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  Packet too large."];
  }
 
  plainBufferSize = SecKeyGetBlockSize(privateKey);
@@ -159,7 +159,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  {   
   if(privateKey) CFRelease(privateKey);
   
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  Packet too large."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt.  Packet too large."];
  }
  
  SecKeyDecrypt(privateKey, kSecPaddingPKCS1, cipherBuffer, cipherBufferSize, plainBuffer, &plainBufferSize); 
@@ -193,7 +193,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  {
   if(publicKey) CFRelease(publicKey);
 
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not decrypt."];
  }
 
  size_t cipherBufferSize = SecKeyGetBlockSize(publicKey);
@@ -212,7 +212,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
   if(publicKey) CFRelease(publicKey);
   free(cipherBuffer);
   
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not encrypt.  Packet too large."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not encrypt.  Packet too large."];
  }
  
  SecKeyEncrypt(publicKey, kSecPaddingPKCS1, nonce, strlen( (char*)nonce ) + 1, &cipherBuffer[0], &cipherBufferSize);
@@ -246,7 +246,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
   strippedKey = [[strippedKey stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
  }
  else
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set private key."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set private key."];
  
  NSData *strippedPrivateKeyData = [NSData dataFromBase64String:strippedKey];
  
@@ -262,7 +262,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  if (persistKey != nil) CFRelease(persistKey);
  
  if ((secStatus != noErr) && (secStatus != errSecDuplicateItem))
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set private key."];
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set private key."];
  
  SecKeyRef keyRef = nil;
  [privateKey removeObjectForKey:(id)kSecValueData];
@@ -273,7 +273,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  SecItemCopyMatching((CFDictionaryRef)privateKey,(CFTypeRef *)&keyRef);
   
  if (!keyRef)
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set private key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set private key."]; 
  
  if (keyRef) CFRelease(keyRef);
 }
@@ -307,7 +307,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
   isX509 = NO;
  }
  else
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
  
  NSData *strippedPublicKeyData = [NSData dataFromBase64String:strippedKey];
  
@@ -318,7 +318,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
   
   size_t i = 0;
   if (bytes[i++] != 0x30)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   /* Skip size bytes */
   if (bytes[i] > 0x80)
@@ -327,19 +327,19 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
    i++;
   
   if (i >= bytesLen)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   if (bytes[i] != 0x30)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   /* Skip OID */
   i += 15;
   
   if (i >= bytesLen - 2)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   if (bytes[i++] != 0x03)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   /* Skip length and null */
   if (bytes[i] > 0x80)
@@ -348,13 +348,13 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
    i++;
   
   if (i >= bytesLen)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   if (bytes[i++] != 0x00)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   if (i >= bytesLen)
-   [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+   [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
   
   strippedPublicKeyData = [NSData dataWithBytes:&bytes[i] length:bytesLen - i];
  }
@@ -362,7 +362,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  DLog(@"X.509 Formatted Public Key bytes:\n%@",[strippedPublicKeyData description]);
  
  if (strippedPublicKeyData == nil)
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
  
  DLog(@"Stripped Public Key Bytes:\n%@",[strippedPublicKeyData description]);
  
@@ -376,7 +376,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  if (persistKey != nil) CFRelease(persistKey);
  
  if ((secStatus != noErr) && (secStatus != errSecDuplicateItem))
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
  
  SecKeyRef keyRef = nil;
  [publicKey removeObjectForKey:(id)kSecValueData];
@@ -387,7 +387,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  SecItemCopyMatching((CFDictionaryRef)publicKey,(CFTypeRef *)&keyRef);
   
  if (!keyRef)
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not set public key."]; 
 
  if (keyRef) CFRelease(keyRef);
 }
@@ -404,7 +404,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  OSStatus secStatus = SecItemDelete((CFDictionaryRef)privateKey);
  
  if ((secStatus != noErr) && (secStatus != errSecDuplicateItem))
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not remove key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not remove key."]; 
 }
 
 
@@ -454,7 +454,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  OSStatus err = SecKeyGeneratePair((CFDictionaryRef)keyPairAttr, &publicKey, &privateKey);
  
  if (err != noErr)
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not generate key pair."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not generate key pair."]; 
 
  if(privateKeyAttr) [privateKeyAttr release];
  if(publicKeyAttr) [publicKeyAttr release];
@@ -478,7 +478,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  OSStatus err = SecItemCopyMatching((CFDictionaryRef)queryPrivateKey,(CFTypeRef *)&privateKeyBits);
  
  if (err != noErr)
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not get private key.  Tag may be bad."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could not get private key.  Tag may be bad."]; 
  
  NSMutableData * encKey = [[NSMutableData alloc] init];
  
@@ -512,7 +512,7 @@ static NSString *pemPrivateFooter = @"-----END RSA PRIVATE KEY-----";
  OSStatus err = SecItemCopyMatching((CFDictionaryRef)queryPublicKey,(CFTypeRef *)&publicKeyBits);
    
  if (err != noErr)
-  [Exception raise:USER_DATA_CORRUPTED function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could get public key."]; 
+  [Exception raise:FAILURE function:__PRETTY_FUNCTION__ line:__LINE__ description:@"Could get public key."]; 
  
  unsigned char builder[15];
  NSMutableData *encKey = [[NSMutableData alloc] init];

@@ -8,8 +8,7 @@
 
 typedef enum 
 {
- USER_DATA_CORRUPTED,
- FAILURE,
+ FAILURE
 } ExceptionType;
 
 
